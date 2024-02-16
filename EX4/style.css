@@ -1,0 +1,146 @@
+body {
+  font-family: Helvetica, sans-serif, sans-serif;
+  font-weight: bold;
+  color: black;
+  margin: 0%;
+  border: 0%;
+  background-image: url('back.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.n1 {
+  height: 15vh;
+}
+
+ul {
+  margin: 0%;
+  list-style-type: none;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+ul li {
+  display: inline-block;
+  width: 23%;
+  transition: transform 0.3s ease;
+}
+
+ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+ul li:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: (255, 255, 255, 0.4);
+}
+
+a:hover {}
+
+.logo- {
+  color: rgb(0, 0, 0);
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+form {
+  border: 3px solid #635c5c;
+  background-color: rgb(99, 92, 92, 0.3);
+  width: 320px;
+  margin-top: 4%;
+  margin-left: 16%;
+  border-radius: 20px;
+  display: inline-block;
+  position: relative;
+  box-shadow: #ccc;
+}
+
+form h2 {
+  text-align: center;
+}
+
+
+.container label {
+  padding-left: 5%;
+}
+
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  width: 80%;
+  padding: 20px 20px;
+  margin: 10px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+
+button {
+  background-color: #09aeef;
+  color: white;
+  padding: 14px;
+  margin: 8px 0 10px 60px;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  border-radius: 15px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+img {
+  display: inline-block;
+  box-shadow: 10px 10px #d89969;
+  border-radius: 60%;
+  margin-left: 9%;
+  opacity: 0.3;
+  padding-top: 20px;
+  width: 20% ;
+  height:230px;
+
+}
+
+img:hover {
+  opacity: 1;
+  transform: scale(1.1) rotate(-3deg);
+}
+
+h1 {
+  padding-left: 20%;
+  display: inline-block;
+  border: none;
+  width: 30%;
+  height: 50px;
+  background-color: none;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-left: 2%;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(231, 151, 3);
+  text-shadow: 2px black;
+
+}
+
+p {
+  padding-left: 20%;
+  display: inline-block;
+  border: none;
+  width: 30%;
+  height: 50px;
+  background-color: none;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 15px;
+  color: rgb(226, 237, 9);
+  font-size: 20px;
+
+}

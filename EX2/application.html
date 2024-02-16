@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLICATION PAGE</title>
+    <link rel="icon" type="image/x-icon" href="lo.jpg">
+</head>
+<body>
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="70%">
+                    <h2>Karunya Institution of Technology and Sciences</h2>
+                </td>
+                <td width="50" align="right">
+                    <img src="klogo.png" alt="Logo pic" width="100" height="100">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr color="blue">
+
+    <div align="center">
+        <a href="index.html" target="_blank">Media Elements</a>&nbsp; &nbsp;
+        <a href="application.html">Application Form</a>
+    </div>
+    <hr color="blue">
+<form action="resume.php" method="post">
+    <fieldset>
+        <legend style="text-align: center; color: blue;">Application Form</legend>
+
+        <table width="50%" align="center">
+            <tr>
+                <td>
+                    <label for="name" style="color: blue;">Name:</label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="name" required placeholder="Enter Your Name"><b style="color: blue;">*</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="apnum" style="color: blue;">Application Number:</label>
+                </td>
+                <td>
+                    <input type="text" id="apnum" name="apnum" required placeholder="URK22AIXXXX"><b style="color: blue;">*</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password:</label>
+                </td>
+                <td>
+                    <input type="password" id="password" name="password" required placeholder="max length-10">*
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="up">Age:</label>
+                </td>
+                <td>
+                    <input type="text" id="up" name="up" required placeholder="19 - 24">*
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <label for="male">Male</label>
+                    <input type="radio" id="male"  name="gender">
+                    <label for="female">Female</label>
+                    <input type="radio" id="female"  name="gender">
+                </td>
+            </tr>
+            <tr>
+                 <td>
+                    DOB:
+                </td>
+                <td>
+                    <input type="date"  name="date" required >*
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mobile:
+                </td>
+                <td>
+                    <input type="tel" name="phone" placeholder=(+91)123-456-778 >*
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email:</label>
+                </td>
+                <td>
+                    <input type="email" id="email" name="email" required placeholder="eg:abc123@gmail.com">*
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="add">Address:</label>
+                </td>
+                <td>
+                    <textarea id="add" name="add" rows="4" cols="50"></textarea>
+                </td> 
+            </tr>
+            <tr>
+                <td>
+                    <label for="code">Zipcode:</label>
+                </td>
+                <td>
+                    <input type="number" id="code" name="code" required placeholder="Only 6 Numbers">*
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="lan" style="color: blue;">Languages Known:</label>
+                </td>
+                <td>
+
+                    <label for="lan" style="color: blue;">English</label>
+                    <input type="checkbox" name="lan" id="lan" value="English">
+                    <label for="lan1" style="color: blue;">Tamil</label>
+                    <input type="checkbox" name="lan" id="lan1" value="Tamil">
+                    <label for="lan2" style="color: blue;">Malayalam</label>
+                    <input type="checkbox" name="lan" id="lan2" value="Malayalam">
+                    <label for="lan3" style="color: blue;">Telgu</label>
+                    <input type="checkbox" name="lan" id="lan3" value="Telgu">
+                    <label for="lan4" style="color: blue;">Hindi</label>
+                    <input type="checkbox" name="lan" id="lan4" value="Hindi">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="color: blue;" for="course">Select Your Course:</label>
+                </td>
+                <td>
+                    <select name="course" id="course">
+                        <option value="B.Tech Computer Science and Engineering">B.Tech Computer Science and Engineering</option>
+                        <option value="B.Tech Artificial Intelligence & Data Science">B.Tech Artificial Intelligence & Data Science</option>
+                        <option value="Bsc Agricultural Science">Bsc Agricultural Science</option>
+                        <option value="B.Tech Ece">B.Tech Ece</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p style="color: blue;" >Upload Your Photo:</p>
+                </td>
+                <td>
+                    <input type="file" id="myFile" name="filename">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="file" style="color: blue;">Your Progress:</label></td>
+                <td><progress id="file" value="50" max="100">-</progress><span><small><sup style="color: blue;">50% Completed</sup></small></span>
+                </td>
+            </tr>
+        </table>
+        <div align="center" >
+            <input type="submit" onclick="alert('confrim to Register!')" value="Submit">
+        </div>
+    </fieldset> 
+</form>
+</body>
+</html>
