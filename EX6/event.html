@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style Modification</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: white; /* Set default background color to white */
+    }
+    #content {
+        background-color: lightblue;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        display: inline-block; /* Make the blue area inline-block to center it */
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: lightblue;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 20px auto;
+        text-align: center;
+        transition: font-size 0.3s ease;
+    }
+</style>
+</head>
+<body>
+
+<h2>Style Modification</h2>
+
+<div id="content">
+    <p>Change the background color of the webpage:</p>
+    <input type="button" id="startButton" value="Start Background Color Change" onclick="toggleBackgroundColorChange()">
+    <input type="button" value="Stop Background Color Change" onclick="stopBackgroundColorChange()">
+    <br><br>
+    <label for="backgroundColorPicker">Choose background color:</label>
+    <input type="color" id="backgroundColorPicker" onchange="changeBackgroundColor()">
+    <br><br>
+    <label for="textColorPicker">Choose text color:</label>
+    <input type="color" id="textColorPicker" onchange="changeTextColor()">
+    <br><br>
+    <label for="opacityRange">Adjust image opacity:</label>
+    <input type="range" id="opacityRange" min="0" max="1" step="0.1" value="1" onchange="changeOpacity()">
+    <br><br>
+    <img id="image" src="example.jpeg" alt="Example Image">
+
+    <div class="box" onmouseover="increaseFontSize(this)" onmouseout="decreaseFontSize(this)">
+        <p>This is a paragraph inside the box.</p>
+    </div>
+</div>
+
+
+
+
+<script>
+    var backgroundColorInterval;
+
+    function toggleBackgroundColorChange() {
+        if (!backgroundColorInterval) {
+            backgroundColorInterval = setInterval(changeBackgroundColor, 2000);
+            document.getElementById("startButton").value = "Stop Background Color Change";
+        } else {
+            clearInterval(backgroundColorInterval);
+            backgroundColorInterval = null; // Reset interval variable
+            document.getElementById("startButton").value = "Start Background Color Change";
+        }
+    }
+
+    function stopBackgroundColorChange() {
+        clearInterval(backgroundColorInterval);
+        backgroundColorInterval = null; // Reset interval variable
+        document.getElementById("startButton").value = "Start Background Color Change";
+    }
+
+    function changeBackgroundColor() {
+        var color = document.getElementById("backgroundColorPicker").value;
+        document.getElementById("content").style.backgroundColor = color;
+    }
+
+    function changeTextColor() {
+        var color = document.getElementById("textColorPicker").value;
+        document.getElementById("content").style.color = color;
+    }
+
+    function changeOpacity() {
+        var opacity = document.getElementById("opacityRange").value;
+        document.getElementById("image").style.opacity = opacity;
+    }
+
+    var content = document.getElementById("content");
+    content.onmouseover = function() {
+        this.style.fontSize = "20px";
+    };
+    content.onmouseout = function() {
+        this.style.fontSize = "inherit";
+    };
+
+    function increaseFontSize(element) {
+        element.style.fontSize = "24px";
+    }
+
+    function decreaseFontSize(element) {
+        element.style.fontSize = "16px";
+    }
+</script>
+
+</body>
+</html>

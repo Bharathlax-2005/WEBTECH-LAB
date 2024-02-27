@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+    h2 {
+        text-align: center;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"], input[type="text"] {
+        width: calc(50% - 10px);
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        width: calc(25% - 10px);
+        padding: 10px;                             
+        margin: 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #result {
+        text-align: left;
+        margin-top: 20px;                                                                                                                                                                           
+        font-size: 20px;
+    }
+    #answer {
+        width: calc(50% - 10px);
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+
+<h2>Simple Calculator</h2>
+<form id="calculatorForm">
+    <label for="num1">Enter 1 number</label>
+    <input type="number" id="num1" >
+    <br>
+    <label for="num2">Enter 2 number</label>
+    <input type="number" id="num2" >
+    <br>
+    <div id="result">Result: <input type="text" id="answer" readonly></div>
+
+    <button type="button" onclick="add()">+</button>
+    <button type="button" onclick="subtract()">-</button>
+    <button type="button" onclick="multiply()">x</button>
+    <button type="button" onclick="divide()">/</button>
+    <button type="button" onclick="clearFields()">Clear</button>
+
+    <script>
+        function add() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result = num1 + num2;
+            document.getElementById('answer').value = result;
+        }
+
+        function subtract() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result = num1 - num2;
+            document.getElementById('answer').value = result;
+        }
+
+        function multiply() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result = num1 * num2;
+            document.getElementById('answer').value = result;
+        }
+
+        function divide() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            if (num2 === 0) {
+                alert("Division by zero is not allowed");
+                return;
+            }
+            var result = num1 / num2;
+            document.getElementById('answer').value = result;
+        }
+
+        function clearFields() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('answer').value = '';
+        }
+    </script>
+</form>
+
+</body>
+</html>

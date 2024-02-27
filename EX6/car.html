@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Car</title>
+    <style>
+        #carContainer {
+            position: relative;
+            width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+
+        #car {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            height:auto;
+            width: auto;
+        }
+
+        #pillar {
+            position: absolute;
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 150px;
+            background-color: #f00;
+        }
+
+        #splashBox {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #ff0;
+            border: 1px solid #000;
+        }
+
+        #buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="carContainer">
+        <img id="car" src="car.png" alt="Car Image">
+        <div id="pillar"></div>
+        <div id="splashBox">Danger</div>
+    </div>
+
+    <div id="buttons">
+        <button onclick="startCar()">Start</button>
+        <button onclick="stopCar()">Stop</button>
+        <button onclick="resetCar()">Reset</button>
+    </div>
+
+    <script>
+        var carInterval;
+        var carPosition = 0;
+
+        function startCar() {
+            carInterval = setInterval(moveCar, 10);
+        }
+
+        function stopCar() {
+            clearInterval(carInterval);
+            checkCollision();
+        }
+
+        function resetCar() {
+            clearInterval(carInterval);
+            carPosition = 0;
+            document.getElementById('car').style.left = carPosition + 'px';
+            hideSplashBox();
+        }
+
+        function moveCar() {
+            carPosition += 2;
+            document.getElementById('car').style.left = carPosition + 'px';
+            checkCollision();
+        }
+
+        function checkCollision() {
+            var carLeft = carPosition;
+            var pillarLeft = document.getElementById('pillar').offsetLeft;
+
+            if (carLeft >= pillarLeft) {
+                displaySplashBox();
+                clearInterval(carInterval);
+            }
+        }
+
+        function displaySplashBox() {
+            document.getElementById('splashBox').style.display = 'block';
+        }
+
+        function hideSplashBox() {
+            document.getElementById('splashBox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

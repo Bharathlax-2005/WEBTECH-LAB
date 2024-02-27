@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Order Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="number"], input[type="email"], input[type="tee"],input[type="te2"],input[type="te3"] {
+        width: calc(33.3% - 10px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        
+    }
+    .sizes input[type="number"] {
+        width: calc(25% - 10px);
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #totalCost {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+    .images-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .images-container img {
+        width: 30%;
+    }
+    .sizes, .toppings {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 25px;
+        
+    }
+
+    .bk{
+        display:flex;
+        justify-content: first baseline;
+        margin: 25px;
+
+    }
+    .sizes input[type="radio"], .toppings input[type="checkbox"] {
+        margin-right: 10px;
+
+    .images-container input[type="checkbox"] {
+        margin-right: 10px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Foodie Place</h2>
+    <div class="images-container">
+        <div>
+            <img src="p1.jpeg" alt="Pizza 1">
+            <label><input type="checkbox" name="pizza" value="pizza1"> Pizza Rs.300</label>
+        </div>
+        <div>
+            <img src="p2.jpeg" alt="Pizza 2">
+            <label><input type="checkbox" name="pizza" value="pizza2"> Pizza Veg Rs. 100</label>
+        </div>
+        <div>
+            <img src="p3.jpeg" alt="Pizza 3">
+            <label><input type="checkbox" name="pizza" value="pizza3"> Burger Rs.200</label>
+        </div>
+    </div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" >
+
+    <label for="phone">Phone:</label>
+    <input type="tee" id="phone" placeholder="Area">
+    <input type="te2" id="phone" placeholder="Local">
+    <input type="te3" id="phone" placeholder="Local">
+
+    <label for="size">Number of Slices:</label>
+    <input type="number" id="size" min="0" >
+
+
+    <div class="sizes">
+        <label for="size">Pizza Size:</label>
+        <input type="radio" id="size8" name="size" value="8">
+        <label for="size8">8-inch</label>
+        
+        <input type="radio" id="size10" name="size" value="10">
+        <label for="size10">10-inch</label>
+        
+        <input type="radio" id="size12" name="size" value="12">
+        <label for="size12">12-inch</label>
+        
+        <input type="radio" id="size14" name="size" value="14">
+        <label for="size14">14-inch</label>
+    </div>
+
+    <div class="toppings">
+        <label>Toppings                        :</label>
+        <input type="checkbox" id="toppingPepperoni" name="topping" value="Pepperoni">
+        <label for="toppingPepperoni">Pepperoni</label>
+        
+        <input type="checkbox" id="toppingMushrooms" name="topping" value="Mushrooms">
+        <label for="toppingMushrooms">Mushrooms</label>
+        
+        <input type="checkbox" id="toppingOnions" name="topping" value="Onions">
+        <label for="toppingOnions">Onions</label>
+        
+        <input type="checkbox" id="toppingSausage" name="topping" value="Sausage">
+        <label for="toppingSausage">Sausage</label>
+    </div>
+    <div class="bk">
+        <input type="checkbox" id="terms" name="terms" value="con">
+        <label for="terms">I agree to the Terms and Conditions</label>
+    </div>
+
+
+    <button type="button" onclick="calculateTotal()">Order Now</button>
+
+    <p id="totalCost"></p>
+</div>
+
+<script>
+    function calculateTotal() {
+    
+    const pizzaPrice = 300;
+    const vegPizzaPrice = 100;
+    const burgerPrice = 200;
+
+    const selectedPizzas = document.querySelectorAll('input[name="pizza"]:checked');
+    const selectedSize = document.querySelector('input[name="size"]:checked');
+    const selectedToppings = document.querySelectorAll('input[name="topping"]:checked');
+    const agreeTerms = document.getElementById('terms').checked;
+
+    if (selectedPizzas.length === 0) {
+        alert('Please select at least one pizza.');
+        return;
+    }
+
+    let totalPrice = 0;
+    selectedPizzas.forEach(pizza => {
+        switch (pizza.value) {
+            case 'pizza1':
+                totalPrice += pizzaPrice;
+                break;
+            case 'pizza2':
+                totalPrice += vegPizzaPrice;
+                break;
+            case 'pizza3':
+                totalPrice += burgerPrice;
+                break;
+        }
+    });
+
+    if (selectedSize) {
+        switch (selectedSize.value) {
+            case '8':
+                totalPrice *= 1.02; 
+                break;
+            case '10':
+                totalPrice *= 1.04; 
+                break;
+            case '12':
+                totalPrice *= 1.06; 
+                break;
+            case '14':
+                totalPrice *= 1.08; 
+                break;
+        }
+    }
+
+    totalPrice += selectedToppings.length * (totalPrice * 0.1);
+
+    totalPrice *= 1.09;
+
+    const taxPercentage = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+    const tipAmount = totalPrice * (taxPercentage / 100);
+    totalPrice += tipAmount;
+
+    document.getElementById('totalCost').innerText = `Total Cost: ₹${totalPrice.toFixed(2)}`;
+}
+
+</script>
+
+</body>
+</html>

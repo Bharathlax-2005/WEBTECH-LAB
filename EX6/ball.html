@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ball Animation Game</title>
+<style>
+    #playArea {
+        width: 500px;
+        height: 300px;
+        border: 2px solid black;
+        position: relative;
+        overflow: hidden;
+        background-color: rgb(20, 105, 114);
+    }
+    #ball {
+        width: 50px;
+        height: 50px;
+        background-image: url('ball.png'); /* Replace 'ball_image.png' with the path to your image */
+        background-size: cover; /* Adjusts the size of the background image to cover the entire element */
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+
+<div id="playArea">
+    <div id="ball"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
