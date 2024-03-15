@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combined Example</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.5s ease;
+    }
+
+    .header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 24px;
+    }
+
+    .menu-container {
+        width: 250px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #f4f4f4;
+        padding: 20px;
+        transition: left 0.3s ease;
+    }
+
+    .menu-container ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-container ul li {
+        padding: 10px 0;
+        cursor: pointer;
+    }
+
+    .menu-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .menu-btn i {
+        font-size: 24px;
+    }
+
+    .container {
+        text-align: center;
+        margin-top: 100px;
+    }
+
+    select {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 100px;
+        font-size: 36px;
+        color: #333;
+    }
+
+    .menu-detail {
+        display: none;
+        padding: 10px;
+        background-color: #ccc;
+        margin-top: 20px;
+    }
+
+    .menu-container:hover .menu-detail {
+        display: block;
+    }
+
+    .menu-container input[type="checkbox"]:checked + .menu-container ul li label {
+        color: blue;
+    }
+
+    #panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+
+#panel1, #flip1 {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel1 {
+  padding: 50px;
+  display: none;
+}
+
+#panel2, #flip2 {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel2 {
+  padding: 50px;
+  display: none;
+}
+
+</style>
+</head>
+<body>
+
+    
+
+<div class="container">
+    <h1 id="blinking-heading">Blinking BK Effects</h1>
+    <label for="color-selector">Select Background Color:</label>
+    <select id="color-selector">
+        <option value="white">White</option>
+        <option value="lightblue">Light Blue</option>
+        <option value="lightgreen">Light Green</option>
+        <option value="lightpink">Light Pink</option>
+    </select>
+    <br>
+    <br>
+    <div id="flip">Accordian 1</div>
+    <div id="panel">Hey </div>
+    </div>
+    <br>
+    <div id="flip1">Accordian 2</div>
+    <div id="panel1">This is </div>
+    </div>
+    <br>
+    <div id="flip2">Accordian 3</div>
+    <div id="panel2">BK's Coding </div>
+    </div>
+</div>
+    
+
+<script>
+$(document).ready(function() {
+    $('.menu-container ul li').click(function() {
+        var id = $(this).attr('id');
+        $('#' + id + '-detail').slideToggle();
+    });
+
+    function blinkHeading() {
+        $('#blinking-heading').fadeOut(500, function() {
+            $(this).fadeIn(500);
+        });
+    }
+
+    $(document).ready(function() {
+    $('.menu-item').click(function() {
+        var target = $(this).data('target');
+        $('#' + target).slideDown();
+    });
+});
+
+    setInterval(blinkHeading, 1000);
+
+    $('#color-selector').change(function() {
+        var selectedColor = $(this).val();
+        $('body').css('background-color', selectedColor);
+    });
+
+    $(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip1").click(function(){
+    $("#panel1").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip2").click(function(){
+    $("#panel2").slideToggle("slow");
+  });
+});
+
+});
+</script>
+
+</body>
+</html>

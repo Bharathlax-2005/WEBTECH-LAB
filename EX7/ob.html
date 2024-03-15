@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+    }
+
+    #object {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+</head>
+<body>
+
+<div id="object"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+   
+    var positionX = 50;
+    var positionY = 50;
+    var size = 100;
+
+    function animateObject() {
+        var newPositionX = Math.floor(Math.random() * 90); 
+        var newPositionY = Math.floor(Math.random() * 90); 
+        var newSize = Math.floor(Math.random() * 150) + 50; 
+
+        $('#object').animate({
+            top: newPositionY + '%', 
+            left: newPositionX + '%', 
+            width: newSize, 
+            height: newSize 
+        }, 1000); 
+    }
+
+    
+    setInterval(animateObject, 2000);
+});
+</script>
+
+</body>
+</html>
