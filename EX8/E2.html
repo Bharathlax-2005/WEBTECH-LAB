@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="budgetCalculatorApp">
+<head>
+    <title>Budget Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-box {
+            display: inline-block;
+            width: calc(25% - 20px);
+            margin: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+
+        input[type="number"] {
+            width: 150px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" ng-controller="BudgetController">
+    <h2>Budget Calculator</h2>
+    <label for="totalAmount">Total Amount:</label>
+    <input type="number" ng-model="totalAmount">
+    <br>
+
+    <label for="roomRentPercentage">Room Rent Percentage (%):</label>
+    <input type="number"  ng-model="roomRentPercentage">
+    <br>
+
+    <label for="accessoriesPercentage">Accessories Percentage (%):</label>
+    <input type="number"  ng-model="accessoriesPercentage">
+    <br>
+
+    <label for="emergencyPercentage">Emergency Percentage (%):</label>
+    <input type="number"  ng-model="emergencyPercentage">
+    <br>
+
+    <br>
+    <label for="savingsPercentage">Savings Percentage (%):</label>
+    <input type="number"  ng-model="savingsPercentage">
+    <br>
+
+    <button ng-click="evaluateBudget()">Evaluate My Money</button>
+
+    <div class="result-container">
+        <h3>Results:</h3>
+        <div class="result-box" style="background-color: #007bff;">Room Rent: {{ roomRent }}</div>
+        <div class="result-box" style="background-color: #ffc107;">Accessories: {{ accessories }}</div>
+        <div class="result-box" style="background-color: #28a745;">Emergency: {{ emergency }}</div>
+        <div class="result-box" style="background-color: #dc3545;">Savings: {{ savings }}</div>
+    </div>
+</div>
+
+<script>
+    angular.module('budgetCalculatorApp', [])
+        .controller('BudgetController', function ($scope) {
+            $scope.evaluateBudget = function () {
+                var roomRentPercentage = $scope.roomRentPercentage / 100;
+                var accessoriesPercentage = $scope.accessoriesPercentage / 100;
+                var emergencyPercentage = $scope.emergencyPercentage / 100;
+                var savingsPercentage = $scope.savingsPercentage / 100;
+
+                var totalAmount = $scope.totalAmount;
+                
+                $scope.roomRent = totalAmount * roomRentPercentage;
+                $scope.accessories = totalAmount * accessoriesPercentage;
+                $scope.emergency = totalAmount * emergencyPercentage;
+                $scope.savings = totalAmount * savingsPercentage;
+            };
+        });
+</script>
+
+</body>
+</html>

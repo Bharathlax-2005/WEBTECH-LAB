@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="matchingFilterApp">
+<head>
+    <title>Matching Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        label {
+            font-size: 18px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: none;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #e9ecef;
+        }
+
+        li.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" ng-controller="FilterController">
+    <h2>Matching Filter</h2>
+    <label for="searchInput">Search:</label>
+    <input type="text" id="searchInput" ng-model="searchText" placeholder="Search for items...">
+    <br><br>
+
+    <ul>
+        <li ng-repeat="item in items | matchingFilter:searchText" ng-click="selectItem(item)" ng-class="{ 'show': searchText }">
+            {{ item }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    angular.module('matchingFilterApp', [])
+        .controller('FilterController', function ($scope) {
+            $scope.items = [
+                'Aanama',
+                'Madhu',
+                'Bharath',
+                'Manu',
+                'Princy',
+                'Aron',
+                'Dhuruv'
+            ];
+
+            $scope.selectItem = function (item) {
+                alert('You selected: ' + item);
+            };
+        })
+        .filter('matchingFilter', function () {
+            return function (items, searchText) {
+                if (!searchText) {
+                    return [];
+                }
+
+                searchText = searchText.toLowerCase();
+
+                return items.filter(function (item) {
+                    return item.toLowerCase().includes(searchText);
+                });
+            };
+        });
+</script>
+
+</body>
+</html>
