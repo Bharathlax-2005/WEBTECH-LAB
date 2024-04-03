@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+  *{
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+  }
+  input[type='text']{
+    background-color: aliceblue;
+    color: black;
+  }
+</style>
+<body>
+
+<div ng-app="a1" ng-controller="n1">
+  <p>
+    Search:<input type="text" ng-model="b1">
+    Add:<input type="text" ng-model="b2">
+    <input type="button" value="Add" ng-click="addName()">
+  </p>
+
+  <ul>
+    <li ng-repeat="i in names | filter:b1">
+      {{ i }}
+      <a href="#" ng-click="removeName($index)" style="text-decoration: none;color: red;">[del]</a>
+    </li>
+  </ul>
+
+</div>
+
+<script>
+angular.module('a1', []).controller('n1', function($scope) {
+    $scope.names = [
+        'Andhra Pradesh',
+        'Arunachal Pradesh',
+        'Assam',
+        'Bihar',
+        'Chhattisgarh',
+        'Goa',
+        'Gujarat',
+        'Haryana',
+        'Himachal Pradesh',
+        'Tamil Nadu',
+        'Jharkhand',
+        'Karnataka',
+        'Kerala',
+        'Madhya Pradesh',
+        'Maharashtra'
+    ];
+
+    $scope.addName = function() {
+            $scope.names.push($scope.b2);
+    };
+
+    $scope.removeName = function(index) {
+        $scope.names.splice(index, 1);
+    };
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>My Personal Website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #555;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Personal Website</h1>
+    </header>
+
+    <nav>
+        <a href="#!personal">Personal Details</a>
+        <a href="#!academic">Academic Details</a>
+        <a href="#!projects">Project/Internship Details</a>
+        <a href="#!login">Login</a>
+        <a href="#!signup">Sign Up</a>
+        <a href="#!contact">Contact Details</a>
+    </nav>
+
+    <div class="content">
+        <ng-view></ng-view>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My Personal Website</p>
+    </footer>
+
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when("/personal", {
+                    templateUrl: "personal-details.html"
+                })
+                .when("/academic", {
+                    templateUrl: "academic-details.html"
+                })
+                .when("/projects", {
+                    template:"<h2>Project/Internship Details</h2><p>Project: Emotion Monitoring System</p><p>Internship: data science and Machine Learning </p>"
+                })
+                .when("/login", {
+                    templateUrl: "login.htm"
+                })
+                .when("/signup", {
+                    templateUrl: "signup.html"
+                })
+                .when("/contact", {
+                    template:"<h2>Contact Details</h2><p>Email: <a href='#'>bharathkumar22@karunya.edu.in</a></p><p>Phone: <a href='#''>9999999999</a></p>"
+ 
+                });
+        });
+    </script>
+</body>
+
+</html>

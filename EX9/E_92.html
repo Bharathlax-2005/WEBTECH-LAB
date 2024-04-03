@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="productApp">
+
+<head>
+    <title>Product Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column; /* Align elements vertically */
+            margin-bottom: 10px;
+        }
+
+        .input-container input {
+            margin-bottom: 10px; /* Add some space between input fields */
+            padding: 5px;
+        }
+
+        .product-item button {
+            background-color: #dc3545;
+            color: rgb(237, 69, 69);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .product-item button:hover {
+            background-color: #bd0c20;
+        }
+        .b{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="ProductController">
+        <h2 class="b">Product Management</h2>
+        <div class="input-container">
+            <input type="text" ng-model="newProduct.id" placeholder="Product ID">
+            <input type="text" ng-model="newProduct.name" placeholder="Product Name">
+            <input type="number" ng-model="newProduct.price" placeholder="Product Price">
+            <button ng-click="addProduct()">Add Product</button>
+        </div>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price | currency }}</td>
+                <td><button ng-click="deleteProduct($index)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        angular.module('productApp', [])
+            .controller('ProductController', ['$scope', function ($scope) {
+                $scope.products = [];
+
+                $scope.newProduct = {
+                    id: '',
+                    name: '',
+                    price: ''
+                };
+
+                $scope.addProduct = function () {
+                    $scope.products.push({
+                        id: $scope.newProduct.id,
+                        name: $scope.newProduct.name,
+                        price: $scope.newProduct.price
+                    });
+                    $scope.newProduct = {
+                        id: '',
+                        name: '',
+                        price: ''
+                    };
+                };
+
+                $scope.deleteProduct = function (index) {
+                    $scope.products.splice(index, 1);
+                };
+            }]);
+    </script>
+</body>
+
+</html>

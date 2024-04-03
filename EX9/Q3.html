@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+   
+<style>
+    *{
+        background-color: #000000;
+        color: aliceblue;
+    }
+    input[type='text'],input[type='password']{
+        background-color: aliceblue;
+    }
+</style>
+
+<body ng-app="myApp">
+<nav>
+||<a href="#!pd">Personal Details</a>
+<a href="#!ad">Academic Details</a>
+<a href="#!pi">Project / Internship Details</a>
+<a href="#!lo">Login Page</a>
+<a href="#!su">Sign Up Page</a>
+<a href="#!cd">Contact Details</a>
+</nav>
+
+<div ng-view></div>
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl:"signup.html"
+    })
+    .when("/pd", {
+        templateUrl:"signup.html"
+    })
+    .when("/ad", {
+        template:"<h2>Academic Details</h2><p>University: Karunya University</p><p>Degree: B.tech</p><p>Course: AI & DS</p>"
+    })
+    .when("/pi", {
+        template:"<h2>Project/Internship Details</h2><p>Project: Emotion Monitoring System</p><p>Internship: data science and Machine Learning </p>"
+    })
+    .when("/lo", {
+        templateUrl:"login.html"
+    })
+    .when("/su", {
+        templateUrl:"signup.html"
+    })
+    .when("/cd", {
+        template:"<h2>Contact Details</h2><p>Email: <a href='#'>sooryak@karunya.edu.in</a></p><p>Phone: <a href='#''>9943051504</a></p>"
+    });
+});
+</script>
+</body>
+</html>
